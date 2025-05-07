@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "nourriture.h"
 #include "ajout.h"
 #include "recherche.h"
 #include "adoption.h"
