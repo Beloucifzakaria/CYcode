@@ -124,10 +124,19 @@ printf("❌ Année de naissance invalide.\n");
 return 0;
 }
 
-if (strcmp(espece_min, "chien") == 0 && age > 20) return 0;
-if (strcmp(espece_min, "chat") == 0 && age > 25) return 0;
-if (strcmp(espece_min, "hamster") == 0 && age > 4) return 0;
-if (strcmp(espece_min, "autruche") == 0 && age > 45) return 0;
+if (strcmp(espece_min, "chien") == 0 && age > 20) {
+        printf("❌ Un chien ne peut pas vivre plus de 20 ans.\n");
+        return 0;
+    } else if (strcmp(espece_min, "chat") == 0 && age > 25) {
+        printf("❌ Un chat ne peut pas vivre plus de 25 ans.\n");
+        return 0;
+    } else if (strcmp(espece_min, "hamster") == 0 && age > 4) {
+        printf("❌ Un hamster ne peut pas vivre plus de 4 ans.\n");
+        return 0;
+    } else if (strcmp(espece_min, "autruche") == 0 && age > 45) {
+        printf("❌ Une autruche ne peut pas vivre plus de 45 ans.\n");
+        return 0;
+    }
 
 return 1;
 }
