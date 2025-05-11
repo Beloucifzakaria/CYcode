@@ -16,20 +16,44 @@ vider_buffer();
 }
 
 int lireEntier(const char *invite, int min, int max) {
-char buffer[100];
-int entier;
-char *fin;
-while (1) {
-printf("%s", invite);
-if (!fgets(buffer, sizeof(buffer), stdin)) continue;
-if (strchr(buffer, '\n') == NULL) vider_buffer();
-buffer[strcspn(buffer, "\n")] = '\0';
-if (strlen(buffer) == 0) continue;
-entier = strtol(buffer, &fin, 10);
-if (*fin != '\0') continue;
-if (entier < min || entier > max) continue;
-return entier;
-}
+    char buffer[100];
+    int entier;
+    char *fin;
+
+    while (1) {
+        printf("%s", invite);
+        if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
+            printf("❌ ERREUR DE LECTURE, VEUILLEZ REESSAYER.\n");
+            continue;
+        }
+
+        
+        if (strchr(buffer, '\n') == NULL) {
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+        }
+
+      
+        buffer[strcspn(buffer, "\n")] = '\0';
+
+        if (strlen(buffer) == 0) {
+            printf("❌ Entrée vide. Veuillez entrer un nombre.\n");
+            continue;
+        }
+
+        entier = strtol(buffer, &fin, 10);
+        if (*fin != '\0') {
+            printf("❌ Entrée invalide. Veuillez entrer un nombre valide.\n");
+            continue;
+        }
+
+        if (entier < min || entier > max) {
+            printf("Veuillez entrer un nombre entre %d et %d.\n", min, max);
+            continue;
+        }
+
+        return entier;
+    }
 }
 
 int lireChoixUtilisateur() {
