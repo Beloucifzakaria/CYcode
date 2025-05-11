@@ -23,6 +23,9 @@ Affiche une liste complète et à jour des animaux présents dans le refuge avec
 -🍗 Calculer la nourriture quotidienne
 Calcule la quantité de nourriture nécessaire chaque jour pour tous les animaux en fonction de leurs besoins spécifiques.
 
+-❔ Quiz d’adoption  
+Petit questionnaire pour orienter l’utilisateur vers l’animal qui pourrait le mieux lui correspondre (selon son énergie, son temps libre et son habitat).
+
 -🎉 Interface terminal simple et intuitive
 Interface en ligne de commande claire pensée pour être facile à utiliser même sans grande expérience technique.
 
