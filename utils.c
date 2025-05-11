@@ -145,11 +145,19 @@ int valider_poids(const char *espece, float poids) {
 char espece_min[20];
 to_lowercase_str(espece_min, espece);
 
-if (poids <= 0.0f) return 0;
-if (strcmp(espece_min, "chien") == 0 && (poids < 1.0f || poids > 100.0f)) return 0;
-if (strcmp(espece_min, "chat") == 0 && (poids < 1.0f || poids > 12.0f)) return 0;
-if (strcmp(espece_min, "hamster") == 0 && (poids < 0.02f || poids > 0.2f)) return 0;
-if (strcmp(espece_min, "autruche") == 0 && (poids < 50.0f || poids > 160.0f)) return 0;
+if (strcmp(espece_min, "chien") == 0 && (poids < 1.0f || poids > 100.0f)) {
+        printf("❌ Un chien pèse généralement entre 1 et 100 kg.\n");
+        return 0;
+    } else if (strcmp(espece_min, "chat") == 0 && (poids < 1.0f || poids > 12.0f)) {
+        printf("❌ Un chat pèse généralement entre 1 et 12 kg.\n");
+        return 0;
+    } else if (strcmp(espece_min, "hamster") == 0 && (poids < 0.02f || poids > 0.2f)) {
+        printf("❌ Un hamster pèse généralement entre 0.02 et 0.2 kg.\n");
+        return 0;
+    } else if (strcmp(espece_min, "autruche") == 0 && (poids < 50.0f || poids > 160.0f)) {
+        printf("❌ Une autruche pèse généralement entre 50 et 160 kg.\n");
+        return 0;
+    }
 
 return 1;
 }
