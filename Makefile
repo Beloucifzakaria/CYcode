@@ -1,18 +1,14 @@
-# Nom du compilateur
+# Compilateur
 CC = gcc
 
 # Options de compilation
-CFLAGS = -Wall -Wextra -std=c11 -Iinclude
+CFLAGS = -Wall -Wextra -std=c11
 
 # Fichiers source
-SRC = src/main.c \
-	  src/animaux.c \
-	  src/affichage.c \
-	  src/utils.c \
-	  src/menu.c
+SRC = main.c animaux.c affichage.c utils.c menu.c
 
 # Fichiers objets
-OBJ = $(SRC:.c=.o)
+OBJ = main.o animaux.o affichage.o utils.o menu.o
 
 # Nom de l'exécutable
 TARGET = Projet
@@ -20,14 +16,26 @@ TARGET = Projet
 # Cible par défaut
 all: $(TARGET)
 
-# Règle de construction pour l'exécutable
+# Construction de l'exécutable
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET)
 
-# Règle pour générer les fichiers objets
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Compilation des fichiers .c en .o
+main.o: main.c
+	$(CC) $(CFLAGS) -c main.c
+
+animaux.o: animaux.c
+	$(CC) $(CFLAGS) -c animaux.c
+
+affichage.o: affichage.c
+	$(CC) $(CFLAGS) -c affichage.c
+
+utils.o: utils.c
+	$(CC) $(CFLAGS) -c utils.c
+
+menu.o: menu.c
+	$(CC) $(CFLAGS) -c menu.c
 
 # Nettoyage
 clean:
-	rm -f $(OBJ) $(TARGET)
+	rm -f *.o $(TARGET)
