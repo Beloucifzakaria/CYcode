@@ -34,11 +34,12 @@ fclose(file);
 return max_id + 1;
 }
 
-
+//On crée une variable nouvel_animal de type Animal et on lui donne un ID unique automatiquement grâce à la fonction generer_id
 void ajouter_animal(const char *fichier) {
     Animal nouvel_animal;
     nouvel_animal.id = generer_id(fichier);
 
+//Affichage
     afficher_ligne_pleine();
     afficher_centre_plein("🐾 AJOUT D'UN NOUVEL ANIMAL 🐾");
     afficher_ligne_pleine();
@@ -47,6 +48,7 @@ void ajouter_animal(const char *fichier) {
 
     // Nom
     int nom_valide;
+    //L’utilisateur entre un nom et on vérifie qu’il est valide (que des lettres, pas trop long). Si c’est bon on le formate (ex : “bella” devient “Bella”).
     do {
         lireChaine("➡️  Entrez le nom (max 19 lettres, sans chiffres) : ", nouvel_animal.nom, sizeof(nouvel_animal.nom));
         nom_valide = valider_et_formater_nom(nouvel_animal.nom);
@@ -57,6 +59,7 @@ void ajouter_animal(const char *fichier) {
 
     // Espèce
     int espece_valide;
+    //boucle Demande une espèce reconnue
     do {
         lireChaine("➡️  Entrez l'espèce (chien, chat, hamster, autruche) : ", nouvel_animal.espece, sizeof(nouvel_animal.espece));
         espece_valide = valider_espece(nouvel_animal.espece);
@@ -66,7 +69,7 @@ void ajouter_animal(const char *fichier) {
 // Année de naissance 
 int annee_valide;
 char buffer[100];
-
+// Demande une année cohérente (selon espèce)
 do {
     printf("➡️  Entrez l'année de naissance : ");
     
@@ -141,6 +144,7 @@ do {
 
 
     // Description
+ 	//Enregistre une description courte ou vide (facultative)
     int description_valide;
     do {
         lireChaineFacultative("➡️  Entrez une description (facultatif, max 30 mots, 200 caractères) : ", nouvel_animal.description, sizeof(nouvel_animal.description));
@@ -164,6 +168,7 @@ do {
     printf("✅ Description enregistrée : %s\n", nouvel_animal.description);
 
     // Écriture dans le fichier
+	// Sauvegarde l’animal dans le fichier et l’affiche
     FILE *file = fopen(fichier, "a");
     if (file) {
         fprintf(file, "%d %s %s %d %.2f %s\n",
