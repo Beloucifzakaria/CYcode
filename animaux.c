@@ -145,7 +145,6 @@ do {
 
 
     // Description
-    
     int description_valide;
     do {
         lireChaineFacultative("➡️  Entrez une description (facultatif, max 30 mots, 200 caractères) : ", nouvel_animal.description, sizeof(nouvel_animal.description));
