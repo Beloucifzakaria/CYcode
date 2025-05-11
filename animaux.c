@@ -15,7 +15,8 @@ if (mkdir("animaux", 0777) == 0) {
 printf("Le dossier 'animaux' a été créé avec succès.\n");
 } else {
 perror("Erreur lors de la création du dossier");
-}
+}// Cette fonction utilise une commande système (ioctl) pour obtenir la largeur actuelle du terminal.
+// Elle renvoie le nombre de colonnes afin de pouvoir centrer ou adapter dynamiquement l'affichage.
 }
 
 // Génère un ID unique pour chaque nouvel animal
